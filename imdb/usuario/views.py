@@ -30,7 +30,4 @@ def cadastrar_usuario():
 @usuario.route("/perfil", methods=["GET"])
 @login_required()
 def perfil():
-    # numero de filmes avaliados
-    avaliacoes = Avaliacao.query.filter(Avaliacao.id_usuario==current_user["id"]).all()
-
     return render_template('perfil.html.j2')
