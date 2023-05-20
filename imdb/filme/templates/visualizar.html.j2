@@ -1,0 +1,20 @@
+{% extends "base.html.j2" %}
+{% block title %}Adicionar Filme{% endblock %}
+
+{% block content %}
+  <h1>{{filme.titulo}}</h1>
+  <p>Diretor: {{filme.diretor}}</p>
+  <p>ID no IMDB: {{filme.id_imdb}}</p>
+  <p>Elenco: </p>
+  <ul>
+    {% for ator in filme.atores.split(',')%}
+    <li>{{ator}}</li>
+    {% endfor%}
+  </ul>
+  <p>Avaliações: </p>
+  <ul>
+    {% for comentario in comentarios %}
+    <li>{{comentario.titulo}} <a>&star;</a> {{comentario.estrelas}}: {{comentario.corpo}}</li>
+    {% endfor%}
+  </ul>
+{% endblock %}
