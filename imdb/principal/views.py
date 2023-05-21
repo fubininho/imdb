@@ -34,28 +34,34 @@ def login():
       return redirect(url_for('principal.index'))
 
    if request.method == 'POST':
-      form = request.form
-
-      email = form["email"]
-      senha = form["senha"]
-
-      usuario = Usuario.query.filter_by(email=email).first()
-
-      if usuario:
-         checaSenha = usuario.checa_senha(senha)
-
-         if (checaSenha):
-               login_user(usuario)
-               print(current_user.funcao)
-               flash("Usuário foi logado com sucesso!")
-               return redirect(url_for('principal.index'))
-         else:
-               flash("A senha é inválida")
-      else:
-         flash('O usuário é inválido')
-         return redirect(url_for('principal.login'))
+      return authenticate()
 
    return render_template('login.html.j2')
+
+def authenticate():
+   form = request.form
+
+   email = form["email"]
+   senha = form["senha"]
+
+   usuario = check_user(email, senha)
+
+   if not usuario:
+      flash("O usuário ou senha são inválidos")
+      return redirect(url_for('principal.login'))
+
+   login_user(usuario)
+   print(current_user.funcao)
+   flash("Usuário foi logado com sucesso!")
+   return redirect(url_for('principal.index'))
+
+def check_user(email, senha):
+   usuario = Usuario.query.filter_by(email=email).first()
+
+   if usuario and usuario.checa_senha(senha):
+      return usuario
+      
+   return None
 
 @principal.route('/logout')
 @login_required()
