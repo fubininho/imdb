@@ -53,19 +53,26 @@ def adicionar():
 @admin_required()
 def editar(filme_id):
     if request.method == "GET":
-        filme = Filme.query.get_or_404(filme_id)
-        return render_template("editar.html.j2", filme=filme)
+        return get_filme_to_edit(filme_id)
 
     if request.method == "POST":
-        filme = Filme.query.get(request.form['id'])
-        filme.titulo = request.form['titulo']
-        filme.imdb_id = request.form['imdb_id']
-        filme.diretor = request.form['diretor']
-        atores = request.form['atores'].replace(', ', ',')
-        filme.atores = atores
-        db.session.commit()
-        flash("Filme editado com sucesso")
-        return redirect(url_for('filme.editar', filme_id=filme.id))
+        return update_filme(filme_id)
+
+def get_filme_to_edit(filme_id):
+    filme = Filme.query.get_or_404(filme_id)
+    return render_template("editar.html.j2", filme=filme)
+
+def update_filme(filme_id):
+    filme = Filme.query.get(request.form['id'])
+    filme.titulo = request.form['titulo']
+    filme.imdb_id = request.form['imdb_id']
+    filme.diretor = request.form['diretor']
+    atores = request.form['atores'].replace(', ', ',')
+    filme.atores = atores
+    db.session.commit()
+    flash("Filme editado com sucesso")
+    return redirect(url_for('filme.editar', filme_id=filme.id))
+
 
 @filme.route("/remover/<filme_id>")
 @admin_required()
