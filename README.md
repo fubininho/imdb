@@ -1,10 +1,14 @@
-Group Members:
-- Ricardo Furbino
-- Thiago Miarelli
-- Lucas Leone
-- Júlia Stancioli
+# Avaliação de Filmes
+
+## Grupo
+
+- Ricardo Furbino | 2020420630
+- Thiago Cleto Miarelli | 2020007058
+- Lucas Augusto Leone | 2019006892
+- Júlia Stancioli Paiva | 2020006680
 
 Escopo (Objetivo):
+
 - Estamos fazendo um sistema similar ao IMDb (Internet Move Database).
 
 Funcionalidades:
