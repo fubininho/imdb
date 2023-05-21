@@ -55,14 +55,13 @@ def editar(filme_id):
     if request.method == "GET":
         filme = Filme.query.get_or_404(filme_id)
         return render_template("editar.html.j2", filme=filme)
+
     if request.method == "POST":
-        filme = Filme.query.get(request.form.get('id'))
-        filme.titulo = request.form.get('titulo')
-        filme.imdb_id = request.form.get('imdb_id')
-        filme.diretor = request.form.get('diretor')
-        atores = request.form.get('atores')
-        if ', ' in atores:
-            atores = ','.join(atores.split(', '))
+        filme = Filme.query.get(request.form['id'])
+        filme.titulo = request.form['titulo']
+        filme.imdb_id = request.form['imdb_id']
+        filme.diretor = request.form['diretor']
+        atores = request.form['atores'].replace(', ', ',')
         filme.atores = atores
         db.session.commit()
         flash("Filme editado com sucesso")
