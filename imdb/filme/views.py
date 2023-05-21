@@ -80,20 +80,22 @@ def remover(filme_id):
 
 ################################################
 
-
 @filme.route("<id_filme>/avaliar", methods=["GET", "POST"])
 @login_required()
 def avaliar(id_filme):
     id_usuario = current_user.id
+
     if request.method == "GET":
-        if len(Avaliacao.query.filter_by(id_usuario = id_usuario, id_filme=id_filme).all()) == 0:
+        if not Avaliacao.query.filter_by(id_usuario=id_usuario, id_filme=id_filme).first():
             return render_template("avaliar.html.j2", id_filme=id_filme)
-        else:
-            return redirect(url_for('filme.editar_avaliacao', id_filme=id_filme))
+
+        return redirect(url_for('filme.editar_avaliacao', id_filme=id_filme))
+
     if request.method == "POST":
-        if (len(Avaliacao.query.filter_by(id_usuario = id_usuario, id_filme=id_filme).all()) > 0):
+        if Avaliacao.query.filter_by(id_usuario=id_usuario, id_filme=id_filme).first():
             flash("Você já tem uma avaliação para esse filme")
             return redirect(url_for('filme.lista'))
+
         titulo = request.form.get('titulo')
         corpo = request.form.get('corpo')
         estrelas = request.form.get('estrelas')
