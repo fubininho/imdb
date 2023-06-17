@@ -1,4 +1,5 @@
 from imdb.filme.models import Filme, Avaliacao
+from imdb.usuario.models import Usuario
 
 def test_new_filme():
     """
@@ -39,3 +40,14 @@ def test_new_avaliacao_with_fixture(new_avaliacao):
     assert new_avaliacao.estrelas == 5
     assert new_avaliacao.id_filme == "1"
     assert new_avaliacao.id_usuario == "1"
+
+def test_new_usuario():
+    usuario = Usuario("teste@teste.teste","teste","teste","user")
+    assert usuario.email == "teste@teste.teste"
+    assert usuario.username == "teste"
+    assert usuario.funcao == "user"
+
+def test_new_usuario_with_fixture(new_usuario):
+    assert new_usuario.email == "teste@teste.teste"
+    assert new_usuario.username == "teste"
+    assert new_usuario.funcao == "user"
