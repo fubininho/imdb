@@ -61,3 +61,8 @@ Histórias de Usuário:
     - Fazer a página home.
 - Tarefa extra:
     - Fazer a base do sistema. Completo.
+
+Para rodar os tests localmente, realize os seguintes passos:
+- Instale o Python 3.6.*
+- Instale os requirements.txt
+- Execute `pytest` na raiz do projeto
