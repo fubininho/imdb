@@ -24,3 +24,18 @@ def test_new_filme_with_fixture(new_filme):
     assert new_filme.diretor == 'Teste'
     assert new_filme.atores == 'Teste'
     assert new_filme.avaliacoes == []
+
+def test_new_avaliacao():
+    avaliacao = Avaliacao("Titulo","Corpo",5,"1","1")
+    assert avaliacao.titulo == "Titulo"
+    assert avaliacao.corpo == "Corpo"
+    assert avaliacao.estrelas == 5
+    assert avaliacao.id_filme == "1"
+    assert avaliacao.id_usuario == "1"
+
+def test_new_avaliacao_with_fixture(new_avaliacao):
+    assert new_avaliacao.titulo == "Titulo"
+    assert new_avaliacao.corpo == "Corpo"
+    assert new_avaliacao.estrelas == 5
+    assert new_avaliacao.id_filme == "1"
+    assert new_avaliacao.id_usuario == "1"
