@@ -13,6 +13,16 @@ def new_avaliacao():
     avaliacao = Avaliacao("Titulo","Corpo",5,"1","1")
     return avaliacao
 
+@pytest.fixture(scope='module')
+def avaliacao_0():
+    avaliacao = Avaliacao("Titulo","Corpo",4,"2","1")
+    return avaliacao
+
+@pytest.fixture(scope='module')
+def avaliacao_1():
+    avaliacao = Avaliacao("Titulo","Corpo",4,"2","1")
+    return avaliacao
+
 @pytest.fixture(scope="module")
 def new_usuario():
     usuario = Usuario("teste@teste.teste","teste","teste","user")
