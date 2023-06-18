@@ -24,12 +24,21 @@ jobs:
           python-version: 3.6.7
 
       - name: Instalar dependências
-        run: pip install -r requirements.txt
+        run: |
+          pip install -r requirements.txt
+          pip install pyleniumio
 
       - name: Executando testes unitários
         run: pytest --disable-warnings tests/unit
+        
+      - name: Build the stack
+        run: docker-compose up -d
+      - name: Sleep
+        run: |
+          sleep 20
       
       - name: Executando testes de sistema
-        run: | 
-          python app.py
+        run: |
+          docker ps
+          ls -ll
           pytest --disable-warnings tests/e2e
