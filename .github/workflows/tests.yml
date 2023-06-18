@@ -33,16 +33,24 @@ jobs:
         
       - uses: nanasess/setup-chromedriver@v2
         
-      - name: Configurando chrome driver
+      - name: Configurando chrome driver para Windows
+        if: matrix.os == 'windows-latest'
+        run: chromedriver --url-base=/wd/hub
+          
+      - name: Configurando chrome driver para Mac
+        if: matrix.os == 'macos-latest'
         run: |
-          {% if matrix.os == 'windows-latest' %}
-          chromedriver --url-base=/wd/hub
-          {% else %}
           export DISPLAY=:99
           chromedriver --url-base=/wd/hub &
           sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
-          {% endif %}
-
+          
+      - name: Configurando chrome driver para Linux
+        if: matrix.os == 'ubuntu-20.04'
+        run: |
+          export DISPLAY=:99
+          chromedriver --url-base=/wd/hub &
+          sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
+        
       
       - name: Executando testes de sistema
         run: |
