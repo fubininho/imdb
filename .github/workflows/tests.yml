@@ -30,15 +30,25 @@ jobs:
 
       - name: Executando testes unitários
         run: pytest --disable-warnings tests/unit
-        
-      - name: Build the stack
-        run: docker-compose up -d
-      - name: Sleep
+
+      - name: Executando testes de sistema
         run: |
-          sleep 20
+          python app.py
+          pytest --disable-warnings tests/e2e
+        
+      - name: 'setup-chromedriver'
+      - uses: nanasess/setup-chromedriver@v2
+        - run: |
+          {% if matrix.os == 'windows-2019' %}
+          chromedriver --url-base=/wd/hub
+          {% else %}
+          export DISPLAY=:99
+          chromedriver --url-base=/wd/hub &
+          sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
+          {% endif %}
+
       
       - name: Executando testes de sistema
         run: |
-          docker ps
-          ls -ll
+          python app.py
           pytest --disable-warnings tests/e2e
