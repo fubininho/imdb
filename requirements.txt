@@ -32,3 +32,4 @@ Flask-Testing
 selenium
 pylenium
 pyleniumio
+allure-pytest
