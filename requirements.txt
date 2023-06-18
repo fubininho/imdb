@@ -33,3 +33,4 @@ selenium
 pylenium
 pyleniumio
 allure-pytest
+seleniumwire
