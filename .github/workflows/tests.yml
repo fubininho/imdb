@@ -25,9 +25,8 @@ jobs:
       - name: Verificar versão do Python
         run: python --version
 
-      - name: Configurar ambiente do sistema
-        if: matrix.os == 'ubuntu-20.04'
-        run: sudo apt-get install -y python3-dev python3-pip
+      - uses: actions/checkout@v2  
+      - uses: actions/setup-python@v2
 
       - name: Instalar dependências
         run: pip install -r requirements.txt
