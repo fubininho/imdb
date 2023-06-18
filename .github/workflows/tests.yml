@@ -26,5 +26,10 @@ jobs:
       - name: Instalar dependências
         run: pip install -r requirements.txt
 
-      - name: Executar testes
-        run: pytest
+      - name: Executando testes unitários
+        run: pytest --disable-warnings tests/unit
+      
+      - name: Executando testes de sistema
+        run: | 
+          python app.py
+          pytest --disable-warnings tests/e2e
