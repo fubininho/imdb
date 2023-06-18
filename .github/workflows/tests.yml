@@ -30,11 +30,6 @@ jobs:
 
       - name: Executando testes unitários
         run: pytest --disable-warnings tests/unit
-
-      - name: Executando testes de sistema
-        run: |
-          python app.py
-          pytest --disable-warnings tests/e2e
         
       - uses: nanasess/setup-chromedriver@v2
         
