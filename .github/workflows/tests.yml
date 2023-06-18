@@ -13,8 +13,8 @@ jobs:
       matrix:
         os:
           - ubuntu-20.04
-          - macos-latest
-          - windows-latest
+          - macos-11
+          - windows-2019
 
     steps:
       - name: Configurar ambiente Python
