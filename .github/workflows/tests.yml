@@ -52,7 +52,12 @@ jobs:
           sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
         
       
+      - name: Executando sistema
+        run: python app.py &
+          
+      - name: Wait for application to start
+        run: sleep 10
+      
       - name: Executando testes de sistema
-        run: |
-          python app.py
-          pytest --disable-warnings tests/e2e
+        run: pytest --disable-warnings tests/e2e
+        
