@@ -17,35 +17,35 @@ def test_create_movie(py: pylenium.Pylenium):
     submit = py.get('input[type="submit"]')
     submit.click()
 
-    assert py.contains('OperationalError')
+    assert py.contains('Bem vindo, admin!')
 
 
-    # sign_up = py.get('a[href="/filme/adicionar/"]')
-    # sign_up.click()
-    #
-    # title = py.getx("//*[text()='Titulo:']").parent().get('input')
-    # title.clear()
-    # random_movie = py.fake.name()
-    # title.type(random_movie)
-    #
-    # id_imdb = py.getx("//*[text()='Id no IMDB:']").parent().get('input')
-    # id_imdb.clear()
-    # random_id = py.fake.user_name()
-    # id_imdb.type(random_id)
-    #
-    # director = py.getx("//*[text()='Diretor:']").parent().get('input')
-    # director.clear()
-    # director.type('Neymar Jr.')
-    #
-    # cast = py.getx("//*[text()='Elenco:']").parent().get('textarea')
-    # cast.clear()
-    # cast.type('Tirica, Gabriel Coutinho e Edu')
-    #
-    # #clicks in submit
-    # submit = py.get('input[type="submit"]')
-    # submit.click()
-    #
-    # assert py.contains('sucesso')
+    sign_up = py.get('a[href="/filme/adicionar/"]')
+    sign_up.click()
+
+    title = py.getx("//*[text()='Titulo:']").parent().get('input')
+    title.clear()
+    random_movie = py.fake.name()
+    title.type(random_movie)
+
+    id_imdb = py.getx("//*[text()='Id no IMDB:']").parent().get('input')
+    id_imdb.clear()
+    random_id = py.fake.user_name()
+    id_imdb.type(random_id)
+
+    director = py.getx("//*[text()='Diretor:']").parent().get('input')
+    director.clear()
+    director.type('Neymar Jr.')
+
+    cast = py.getx("//*[text()='Elenco:']").parent().get('textarea')
+    cast.clear()
+    cast.type('Tirica, Gabriel Coutinho e Edu')
+
+    #clicks in submit
+    submit = py.get('input[type="submit"]')
+    submit.click()
+
+    assert py.contains('sucesso')
 
 
 def test_evaluate_movie(py: pylenium.Pylenium):
