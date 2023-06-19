@@ -7,7 +7,11 @@
 - Lucas Augusto Leone | 2019006892
 - Júlia Stancioli Paiva | 2020006680
 
-Escopo (Objetivo):
+## Testes de Sistema
+
+Enfrentamos problemas ao fazer o CI dos testes de sistema, por isso, gravamos um vídeo os demonstrando: https://youtu.be/OGOF3KeQ6es.
+
+## Escopo (Objetivo)
 
 - Estamos fazendo um sistema similar ao IMDb (Internet Move Database).
 
