@@ -31,7 +31,7 @@ jobs:
       - name: Executando testes unitários
         run: pytest --disable-warnings tests/unit
         
-      - uses: nanasess/setup-chromedriver@v2
+      - uses: browser-actions/setup-chrome@v1
         
       - name: Configurando chrome driver para Windows
         if: matrix.os == 'windows-latest'
