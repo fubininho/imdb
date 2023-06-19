@@ -59,5 +59,4 @@ jobs:
         run: sleep 10
       
       - name: Executando testes de sistema
-        run: pytest --disable-warnings tests/e2e
-        
+        run: pytest --headless --disable-warnings tests/e2e
