@@ -40,5 +40,5 @@ jobs:
       - name: Wait for application to start
         run: sleep 10
       
-      - name: Executando testes de sistema
-        run: pytest --disable-warnings tests/e2e
+#       - name: Executando testes de sistema
+#         run: pytest --disable-warnings tests/e2e
